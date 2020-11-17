@@ -48,14 +48,6 @@
             </#list>
         </where>
     </sql>
-    <sql id="OrderSort">
-        <if test="orderSort != null and orderSort.size() > 0">
-            order by
-            <foreach collection="orderSort" separator="," open="" close="" item="orderItem">
-                <#noparse>${</#noparse>orderItem.column<#noparse>}</#noparse> <#noparse>${</#noparse>orderItem.sort<#noparse>}</#noparse>
-            </foreach>
-        </if>
-    </sql>
 
     <select id="selectOne" resultType="${package.Entity}.${entity}">
         select
@@ -70,15 +62,6 @@
         from ${table.name}
         <include refid="WhereFilter"/>
     </select>
-
-    <select id="listAndSort" resultType="${package.Entity}.${entity}">
-        select
-        <include refid="BaseColumns"/>
-        FROM ${table.name}
-        <include refid="WhereFilter"/>
-        <include refid="OrderSort"/>
-    </select>
-
 
     <insert id="insert" parameterType="${package.Entity}.${entity}" useGeneratedKeys="true"
             keyProperty="id" keyColumn="id">

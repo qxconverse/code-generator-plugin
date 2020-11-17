@@ -1,7 +1,6 @@
 package ${package.Mapper};
 
 import ${package.Entity}.${entity};
-import com.ke.shequ.core.OrderSortItem;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -53,15 +52,5 @@ public interface ${table.mapperName} {
      */
     List<${entity}> listAll(@Param("whereEntity") ${entity} whereEntity);
 
-
-     /**
-      * 通过条件排序
-      *
-      * @param whereEntity
-      * @param orderSort
-      * @return
-      */
-    List<${entity}> listAndSort(@Param("whereEntity") ${entity} whereEntity,
-                                @Param("orderSort") List<OrderSortItem> orderSort);
 }
 </#if>
